@@ -1,35 +1,48 @@
-// Portfolio Configuration - EDIT THIS FILE TO CUSTOMIZE YOUR PORTFOLIO
-// Just change the values below and refresh your website!
-
 const portfolioConfig = {
-    // ==================== CONTACT INFORMATION ====================
+    // Profiel foto URL - vervang dit met je eigen foto
+    profile: {
+        image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&q=80",
+        // Of gebruik je eigen gehoste foto:
+        // image: "https://jouw-domein.nl/foto.jpg"
+    },
+
     contact: {
-        // Je Discord username (wordt getoond op de knop)
         discordUsername: "official_thijs",
-
-        // Discord profiel link (rechtermuisknop op je profiel in Discord → Kopieer ID)
-        // Format: https://discord.com/users/JE_USER_ID
-        // OF gebruik een Discord server invite link
-        discordLink: "https://discord.com/users/JE_USER_ID_HIER",
-
-        // Alternatief: Discord server invite
-        // discordLink: "https://discord.gg/je-server-code"
+        discordLink: "https://discord.com/users/JE_USER_ID_HIER"
     },
 
-    // ==================== STATISTICS ====================
-    // Deze worden automatisch berekend + opgeteld bij je projecten
     stats: {
-        baseScripts: 25, // Aantal scripts buiten deze projecten om
-        baseClients: 15 // Aantal klanten buiten deze projecten om
+        baseScripts: 25,
+        baseClients: 15
     },
 
-    // ==================== PROJECTS ====================
-    // Voeg hier al je projecten toe!
-    // Je kunt zoveel projecten toevoegen als je wilt
+    // Werkervaring - voeg hier je eigen ervaring toe
+    experience: [{
+            date: "2023 - Heden",
+            title: "Lead FiveM Developer",
+            company: "Tatta Roleplay",
+            description: "Hoofdverantwoordelijke voor alle server-side scripting. Ontwikkeling van custom ESX scripts, anticheat systemen, en UI/UX implementaties. Beheer van een team van 3 developers.",
+            tags: ["ESX", "Lua", "MySQL", "Leadership"]
+        },
+        {
+            date: "2022 - 2023",
+            title: "FiveM Scripter",
+            company: "Freelance",
+            description: "Ontwikkeling van custom scripts voor diverse FiveM servers. Specialisatie in inventory systemen, job scripts, en interactieve UI componenten. Meer dan 20 tevreden klanten geholpen.",
+            tags: ["Freelance", "UI Design", "OX Inventory"]
+        },
+        {
+            date: "2021 - 2022",
+            title: "Junior Developer",
+            company: "Eigen Projecten",
+            description: "Gestart met FiveM development door eigen projecten te bouwen. Leren werken met ESX framework, Lua programmeren, en database management. Basis gelegd voor huidige expertise.",
+            tags: ["Learning", "ESX", "Lua Basics"]
+        }
+    ],
+
     projects: [{
             title: "ESX Legacy HUD System",
             description: "Een volledig customizable HUD systeem voor ESX Legacy met OX Lib integratie. Features: cash/bank display, job info, vehicle HUD, en smooth animations.",
-            // Gebruik Unsplash voor placeholder afbeeldingen, of je eigen screenshots
             image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
             tags: ["ESX", "OX Lib", "HUD", "Lua"]
         },
@@ -63,17 +76,8 @@ const portfolioConfig = {
             image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
             tags: ["Anticheat", "Admin", "Security", "Lua"]
         }
-        // Voeg meer projecten toe door te kopiëren en plakken:
-        // {
-        //     title: "Jouw Project",
-        //     description: "Beschrijving...",
-        //     image: "https://jouw-afbeelding-url.jpg",
-        //     tags: ["Tag1", "Tag2", "Tag3"]
-        // }
     ],
 
-    // ==================== SKILLS ====================
-    // Pas je skills aan! Level is 0-100 (percentage)
     skills: [
         { name: "FiveM/Lua", level: 95, icon: "🎮" },
         { name: "ESX Framework", level: 90, icon: "⚙️" },
@@ -81,12 +85,9 @@ const portfolioConfig = {
         { name: "JavaScript/HTML", level: 80, icon: "💻" },
         { name: "MySQL/Database", level: 75, icon: "🗄️" },
         { name: "UI/UX Design", level: 70, icon: "🎨" }
-        // Voeg meer skills toe:
-        // { name: "QBCore", level: 80, icon: "🔧" }
     ]
 };
 
-// Maak de config beschikbaar voor andere scripts
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = portfolioConfig;
 }

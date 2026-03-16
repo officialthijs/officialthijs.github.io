@@ -1,8 +1,6 @@
-// Main JavaScript - Handles all functionality
-// You don't need to edit this file unless you want custom functionality
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize everything
+    loadProfile();
+    loadExperience();
     loadProjects();
     loadSkills();
     updateContact();
@@ -11,15 +9,48 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
 });
 
-// Load projects from config
+// Load Profile Image
+function loadProfile() {
+    const profileImg = document.getElementById('profile-img');
+    if (profileImg && portfolioConfig.profile && portfolioConfig.profile.image) {
+        profileImg.src = portfolioConfig.profile.image;
+        profileImg.alt = "Official_Thijs Profile";
+    }
+}
+
+// Load Experience Timeline
+function loadExperience() {
+    const container = document.getElementById('experience-container');
+
+    if (!container || !portfolioConfig.experience) {
+        console.error('Experience container or config not found');
+        return;
+    }
+
+    container.innerHTML = portfolioConfig.experience.map((exp, index) => `
+        <div class="experience-item" style="animation-delay: ${index * 0.2}s">
+            <div class="experience-dot"></div>
+            <div class="experience-date">${exp.date}</div>
+            <h3 class="experience-title">${exp.title}</h3>
+            <div class="experience-company">${exp.company}</div>
+            <p class="experience-description">${exp.description}</p>
+            <div class="experience-tags">
+                ${exp.tags.map(tag => `<span class="experience-tag">${tag}</span>`).join('')}
+            </div>
+        </div>
+    `).join('');
+    
+    console.log(`Loaded ${portfolioConfig.experience.length} experience items`);
+}
+
 function loadProjects() {
     const container = document.getElementById('projects-container');
-
+    
     if (!container || !portfolioConfig.projects) {
         console.error('Projects container or config not found');
         return;
     }
-
+    
     container.innerHTML = portfolioConfig.projects.map(project => `
         <div class="project-card">
             <img src="${project.image}" alt="${project.title}" class="project-image" loading="lazy">
@@ -36,7 +67,6 @@ function loadProjects() {
     console.log(`Loaded ${portfolioConfig.projects.length} projects`);
 }
 
-// Load skills from config
 function loadSkills() {
     const container = document.getElementById('skills-container');
     
@@ -55,7 +85,6 @@ function loadSkills() {
         </div>
     `).join('');
     
-    // Animate skill bars when visible
     setTimeout(() => {
         document.querySelectorAll('.skill-progress').forEach(bar => {
             bar.style.width = bar.dataset.level + '%';
@@ -65,7 +94,6 @@ function loadSkills() {
     console.log(`Loaded ${portfolioConfig.skills.length} skills`);
 }
 
-// Update contact information
 function updateContact() {
     const link = document.getElementById('discord-link');
     const text = document.getElementById('discord-text');
@@ -78,7 +106,6 @@ function updateContact() {
     link.href = portfolioConfig.contact.discordLink;
     text.textContent = portfolioConfig.contact.discordUsername;
     
-    // Add click event for copying if it's not a valid URL
     if (portfolioConfig.contact.discordLink === '#' || 
         portfolioConfig.contact.discordLink.includes('JE_USER_ID')) {
         link.addEventListener('click', (e) => {
@@ -88,7 +115,6 @@ function updateContact() {
     }
 }
 
-// Animate statistics numbers
 function animateStats() {
     const projects = portfolioConfig.projects ? portfolioConfig.projects.length : 0;
     const baseScripts = portfolioConfig.stats ? portfolioConfig.stats.baseScripts : 0;
@@ -102,7 +128,6 @@ function animateStats() {
     animateNumber('stat-clients', clients);
 }
 
-// Number counter animation
 function animateNumber(id, target) {
     const element = document.getElementById(id);
     if (!element) return;
@@ -119,7 +144,6 @@ function animateNumber(id, target) {
     }, 30);
 }
 
-// Initialize scroll animations
 function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -135,7 +159,6 @@ function initScrollAnimations() {
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 }
 
-// Initialize smooth scroll for navigation
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -155,7 +178,6 @@ function initSmoothScroll() {
     });
 }
 
-// Utility: Copy text to clipboard
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         showNotification(`Copied ${text} to clipboard!`);
@@ -164,7 +186,6 @@ function copyToClipboard(text) {
     });
 }
 
-// Utility: Show notification
 function showNotification(message) {
     const notification = document.createElement('div');
     notification.style.cssText = `
@@ -190,7 +211,6 @@ function showNotification(message) {
     }, 3000);
 }
 
-// Add notification animations to CSS dynamically
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
