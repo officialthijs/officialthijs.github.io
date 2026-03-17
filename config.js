@@ -57,43 +57,43 @@ const portfolioConfig = {
     projects: [{
         title: "OTNET Anticheat",
         description: "Custom anticheat systeem met ingebouwde staffmenu.",
-        image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
+        image: "https://imgur.com/OM7hwE4",
         tags: ["Back-end", "Anticheat", "Security", "Staff", "Lua", "SQL"]
     },
     {
         title: "Gangmenu",
         description: "Custom gangmenu systeem waarbij je xp kan verdienen en kan levelen.",
-        image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
+        image: "https://imgur.com/qFkneCj",
         tags: ["Front-end", "Gangs", "Levels", "UI/UX", "SQL", "Lua"]
     },
     {
         title: "NPC Gijzel",
         description: "Systeem waarbij je NPC's kan gijzelen en ontvoeren.",
-        image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
+        image: "https://imgur.com/ki4O8E5",
         tags: ["Front-end", "Crimineel", "OX Lib"]
     },
     {
         title: "Woning makelaar",
         description: "Custom makelaar ui (funda) waar je woningen kan kopen/huren.",
-        image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
+        image: "https://imgur.com/WSYfJxq",
         tags: ["Front-end", "Lua", "UI/UX", "SQL"]
     },
     {
         title: "Witwas bedrijven",
         description: "Custom witwas script waarbij je bedrijven kan kopen en hiermee geld kan witwassen en medewerkers kan aannemen.",
-        image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
+        image: "https://imgur.com/sJ2jmm8",
         tags: ["Front-end", "Crimineel", "Lua", "UI/UX", "SQL"]
     },         
     {
         title: "Drugs systeem",
         description: "Custom drugs systeem waarbij je drugs kan verzamelen, verwerken en exporteren.",
-        image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
+        image: "https://imgur.com/XKQHzpU",
         tags: ["Front-end", "Crimineel", "Lua", "OX Lib"]
     },
     {
         title: "Recherche systeem",
         description: "Custom recherche systeem waarbij je kogelhulsen kan verzamelen voor informatie en vingerafdrukken van wapen af kan lezen.",
-        image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
+        image: "https://imgur.com/GDKXxwm",
         tags: ["Front-end", "Overheid", "Lua", "OX Lib"]
     }],
 
