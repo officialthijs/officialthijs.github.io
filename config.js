@@ -49,7 +49,7 @@ const portfolioConfig = {
             date: "2024 - 2025",
             title: "Eigenaar & Developer",
             company: "Tatta Roleplay",
-            description: "Mijn eigen fivem server gestart en uitgebouwd bestaand uit bestaande scripts.",
+            description: "Mijn eigen FiveM server gestart en uitgebouwd bestaand uit bestaande scripts.",
             tags: ["Lua", "ESX"]
         }
     ],
