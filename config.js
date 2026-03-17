@@ -96,6 +96,12 @@ const portfolioConfig = {
             description: "Custom recherche systeem waarbij je kogelhulsen kan verzamelen voor informatie en vingerafdrukken van wapen af kan lezen.",
             image: "https://i.imgur.com/GDKXxwm.jpg",  // ← .jpg toegevoegd!
             tags: ["Front-end", "Overheid", "Lua", "OX Lib"]
+        },
+        {
+            title: "Plofkraak",
+            description: "Plofkraak script waarbij je C4 op ATM's kan plaatsen en deze kan openkraken.",
+            image: "https://i.imgur.com/LG4Q2bD.jpg",  // ← .jpg toegevoegd!
+            tags: ["Front-end", "Crimineel", "Lua", "OX Lib"]
         }
     ],
 
