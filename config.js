@@ -58,7 +58,13 @@ const portfolioConfig = {
         title: "OTNET Anticheat",
         description: "Custom anticheat systeem met ingebouwde staffmenu.",
         image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
-        tags: ["Anticheat", "Admin", "Security", "Lua"]
+        tags: ["Back-end", "Anticheat", "Security", "Staff", "Lua"]
+    },
+    {
+        title: "Gangmenu",
+        description: "Custom gangmenu systeem waarbij je xp kan verdienen en kan levelen.",
+        image: "https://images.unsplash.com/photo-1563206767-5b1d1293e9e7?w=800&q=80",
+        tags: ["Front-end", "Gangs", "UI/UX", "Levels", "Lua"]
     }],
 
     skills: [
