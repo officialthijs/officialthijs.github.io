@@ -100,7 +100,7 @@ const portfolioConfig = {
         {
             title: "Plofkraak",
             description: "Plofkraak script waarbij je C4 op ATM's kan plaatsen en deze kan openkraken.",
-            image: "https://i.imgur.com/LG4Q2bD.jpg",  // ← .jpg toegevoegd!
+            image: "https://i.imgur.com/K4p4VYG.jpg",  // ← .jpg toegevoegd!
             tags: ["Front-end", "Crimineel", "Lua", "OX Lib"]
         }
     ],
