@@ -64,9 +64,9 @@ const portfolioConfig = {
     skills: [
         { name: "Lua", level: 95, icon: "🎮" },
         { name: "HTML", level: 80, icon: "⚙️" },
-        { name: "JavaScript", level: 55, icon: "💻" },
-        { name: "SQL", level: 65, icon: "🗄️" },
-        { name: "CSS", level: 75, icon: "🎨" }
+        { name: "JavaScript", level: 30, icon: "💻" },
+        { name: "SQL", level: 75, icon: "🗄️" },
+        { name: "CSS", level: 70, icon: "🎨" }
     ]
 };
 
