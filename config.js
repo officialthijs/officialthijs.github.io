@@ -54,48 +54,50 @@ const portfolioConfig = {
         }
     ],
 
-    projects: [{
-        title: "OTNET Anticheat",
-        description: "Custom anticheat systeem met ingebouwde staffmenu.",
-        image: "https://imgur.com/OM7hwE4",
-        tags: ["Back-end", "Anticheat", "Security", "Staff", "Lua", "SQL"]
-    },
-    {
-        title: "Gangmenu",
-        description: "Custom gangmenu systeem waarbij je xp kan verdienen en kan levelen.",
-        image: "https://imgur.com/qFkneCj",
-        tags: ["Front-end", "Gangs", "Levels", "UI/UX", "SQL", "Lua"]
-    },
-    {
-        title: "NPC Gijzel",
-        description: "Systeem waarbij je NPC's kan gijzelen en ontvoeren.",
-        image: "https://imgur.com/ki4O8E5",
-        tags: ["Front-end", "Crimineel", "OX Lib"]
-    },
-    {
-        title: "Woning makelaar",
-        description: "Custom makelaar ui (funda) waar je woningen kan kopen/huren.",
-        image: "https://imgur.com/WSYfJxq",
-        tags: ["Front-end", "Lua", "UI/UX", "SQL"]
-    },
-    {
-        title: "Witwas bedrijven",
-        description: "Custom witwas script waarbij je bedrijven kan kopen en hiermee geld kan witwassen en medewerkers kan aannemen.",
-        image: "https://imgur.com/sJ2jmm8",
-        tags: ["Front-end", "Crimineel", "Lua", "UI/UX", "SQL"]
-    },         
-    {
-        title: "Drugs systeem",
-        description: "Custom drugs systeem waarbij je drugs kan verzamelen, verwerken en exporteren.",
-        image: "https://imgur.com/XKQHzpU",
-        tags: ["Front-end", "Crimineel", "Lua", "OX Lib"]
-    },
-    {
-        title: "Recherche systeem",
-        description: "Custom recherche systeem waarbij je kogelhulsen kan verzamelen voor informatie en vingerafdrukken van wapen af kan lezen.",
-        image: "https://imgur.com/GDKXxwm",
-        tags: ["Front-end", "Overheid", "Lua", "OX Lib"]
-    }],
+    projects: [
+        {
+            title: "OTNET Anticheat",
+            description: "Custom anticheat systeem met ingebouwde staffmenu.",
+            image: "https://i.imgur.com/OM7hwE4.jpg",  // ← .jpg toegevoegd!
+            tags: ["Back-end", "Anticheat", "Security", "Staff", "Lua", "SQL"]
+        },
+        {
+            title: "Gangmenu",
+            description: "Custom gangmenu systeem waarbij je xp kan verdienen en kan levelen.",
+            image: "https://i.imgur.com/qFkneCj.jpg",  // ← .jpg toegevoegd!
+            tags: ["Front-end", "Gangs", "Levels", "UI/UX", "SQL", "Lua"]
+        },
+        {
+            title: "NPC Gijzel",
+            description: "Systeem waarbij je NPC's kan gijzelen en ontvoeren.",
+            image: "https://i.imgur.com/ki4O8E5.jpg",  // ← .jpg toegevoegd!
+            tags: ["Front-end", "Crimineel", "OX Lib"]
+        },
+        {
+            title: "Woning makelaar",
+            description: "Custom makelaar ui (funda) waar je woningen kan kopen/huren.",
+            image: "https://i.imgur.com/WSYfJxq.jpg",  // ← .jpg toegevoegd!
+            tags: ["Front-end", "Lua", "UI/UX", "SQL"]
+        },
+        {
+            title: "Witwas bedrijven",
+            description: "Custom witwas script waarbij je bedrijven kan kopen en hiermee geld kan witwassen en medewerkers kan aannemen.",
+            image: "https://i.imgur.com/sJ2jmm8.jpg",  // ← .jpg toegevoegd!
+            tags: ["Front-end", "Crimineel", "Lua", "UI/UX", "SQL"]
+        },         
+        {
+            title: "Drugs systeem",
+            description: "Custom drugs systeem waarbij je drugs kan verzamelen, verwerken en exporteren.",
+            image: "https://i.imgur.com/XKQHzpU.jpg",  // ← .jpg toegevoegd!
+            tags: ["Front-end", "Crimineel", "Lua", "OX Lib"]
+        },
+        {
+            title: "Recherche systeem",
+            description: "Custom recherche systeem waarbij je kogelhulsen kan verzamelen voor informatie en vingerafdrukken van wapen af kan lezen.",
+            image: "https://i.imgur.com/GDKXxwm.jpg",  // ← .jpg toegevoegd!
+            tags: ["Front-end", "Overheid", "Lua", "OX Lib"]
+        }
+    ],
 
     skills: [
         { name: "Lua", level: 95, icon: "🎮" },
