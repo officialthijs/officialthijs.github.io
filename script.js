@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    loadProfile();
+    initMobileMenu();
     loadExperience();
     loadProjects();
     loadSkills();
@@ -9,24 +9,42 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
 });
 
-// Load Profile Image
-function loadProfile() {
-    const profileImg = document.getElementById('profile-img');
-    if (profileImg && portfolioConfig.profile && portfolioConfig.profile.image) {
-        profileImg.src = portfolioConfig.profile.image;
-        profileImg.alt = "Official_Thijs Profile";
-    }
+// Mobile Menu Toggle
+function initMobileMenu() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.getElementById('nav-links');
+    
+    if (!menuBtn || !navLinks) return;
+    
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+            menuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
 }
 
-// Load Experience Timeline
 function loadExperience() {
     const container = document.getElementById('experience-container');
-
-    if (!container || !portfolioConfig.experience) {
-        console.error('Experience container or config not found');
-        return;
-    }
-
+    if (!container || !portfolioConfig.experience) return;
+    
     container.innerHTML = portfolioConfig.experience.map((exp, index) => `
         <div class="experience-item" style="animation-delay: ${index * 0.2}s">
             <div class="experience-dot"></div>
@@ -39,17 +57,11 @@ function loadExperience() {
             </div>
         </div>
     `).join('');
-    
-    console.log(`Loaded ${portfolioConfig.experience.length} experience items`);
 }
 
 function loadProjects() {
     const container = document.getElementById('projects-container');
-    
-    if (!container || !portfolioConfig.projects) {
-        console.error('Projects container or config not found');
-        return;
-    }
+    if (!container || !portfolioConfig.projects) return;
     
     container.innerHTML = portfolioConfig.projects.map(project => `
         <div class="project-card">
@@ -63,17 +75,11 @@ function loadProjects() {
             </div>
         </div>
     `).join('');
-    
-    console.log(`Loaded ${portfolioConfig.projects.length} projects`);
 }
 
 function loadSkills() {
     const container = document.getElementById('skills-container');
-    
-    if (!container || !portfolioConfig.skills) {
-        console.error('Skills container or config not found');
-        return;
-    }
+    if (!container || !portfolioConfig.skills) return;
     
     container.innerHTML = portfolioConfig.skills.map(skill => `
         <div class="skill-card">
@@ -85,34 +91,37 @@ function loadSkills() {
         </div>
     `).join('');
     
-    setTimeout(() => {
-        document.querySelectorAll('.skill-progress').forEach(bar => {
-            bar.style.width = bar.dataset.level + '%';
+    // Animate skill bars when visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                bar.style.width = bar.dataset.level + '%';
+                observer.unobserve(bar);
+            }
         });
-    }, 500);
+    }, { threshold: 0.5 });
     
-    console.log(`Loaded ${portfolioConfig.skills.length} skills`);
+    document.querySelectorAll('.skill-progress').forEach(bar => observer.observe(bar));
 }
 
 function updateContact() {
     const link = document.getElementById('discord-link');
     const text = document.getElementById('discord-text');
     
-    if (!link || !text || !portfolioConfig.contact) {
-        console.error('Contact elements or config not found');
-        return;
-    }
+    if (!link || !text || !portfolioConfig.contact) return;
     
     link.href = portfolioConfig.contact.discordLink;
     text.textContent = portfolioConfig.contact.discordUsername;
     
-    if (portfolioConfig.contact.discordLink === '#' || 
-        portfolioConfig.contact.discordLink.includes('JE_USER_ID')) {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            copyToClipboard(portfolioConfig.contact.discordUsername);
-        });
-    }
+    // Copy to clipboard on mobile if link doesn't work
+    link.addEventListener('click', (e) => {
+        if (portfolioConfig.contact.discordLink.includes('636813350453379072')) {
+            return; // Valid link, let it work normally
+        }
+        e.preventDefault();
+        copyToClipboard(portfolioConfig.contact.discordUsername);
+    });
 }
 
 function animateStats() {
@@ -120,12 +129,9 @@ function animateStats() {
     const baseScripts = portfolioConfig.stats ? portfolioConfig.stats.baseScripts : 0;
     const baseClients = portfolioConfig.stats ? portfolioConfig.stats.baseClients : 0;
     
-    const scripts = baseScripts + projects;
-    const clients = baseClients;
-    
     animateNumber('stat-projects', projects);
-    animateNumber('stat-scripts', scripts);
-    animateNumber('stat-clients', clients);
+    animateNumber('stat-scripts', baseScripts + projects);
+    animateNumber('stat-clients', baseClients);
 }
 
 function animateNumber(id, target) {
@@ -164,26 +170,49 @@ function initSmoothScroll() {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
+            if (!target) return;
+            
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         });
     });
 }
 
 function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        showNotification(`Copied ${text} to clipboard!`);
-    }).catch(err => {
-        console.error('Failed to copy:', err);
-    });
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+            showNotification(`Discord gekopieerd: ${text}`);
+        }).catch(() => {
+            fallbackCopy(text);
+        });
+    } else {
+        fallbackCopy(text);
+    }
+}
+
+function fallbackCopy(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showNotification(`Discord gekopieerd: ${text}`);
+    } catch (err) {
+        showNotification('Kon niet kopiëren');
+    }
+    
+    document.body.removeChild(textArea);
 }
 
 function showNotification(message) {
@@ -191,37 +220,41 @@ function showNotification(message) {
     notification.style.cssText = `
         position: fixed;
         bottom: 20px;
-        right: 20px;
+        left: 50%;
+        transform: translateX(-50%);
         background: var(--secondary);
         color: var(--text-primary);
         padding: 1rem 1.5rem;
-        border-radius: 8px;
+        border-radius: 12px;
         border: 1px solid rgba(255,255,255,0.1);
         z-index: 9999;
         font-family: 'Inter', sans-serif;
-        animation: slideIn 0.3s ease;
+        font-size: 0.9rem;
+        text-align: center;
+        max-width: 90%;
+        animation: slideUp 0.3s ease;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     `;
     notification.textContent = message;
     
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
+        notification.style.animation = 'slideDown 0.3s ease';
         setTimeout(() => notification.remove(), 300);
-    }, 3000);
+    }, 2500);
 }
 
+// Add animations
 const style = document.createElement('style');
 style.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+    @keyframes slideUp {
+        from { transform: translate(-50%, 100%); opacity: 0; }
+        to { transform: translate(-50%, 0); opacity: 1; }
     }
-    @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
+    @keyframes slideDown {
+        from { transform: translate(-50%, 0); opacity: 1; }
+        to { transform: translate(-50%, 100%); opacity: 0; }
     }
 `;
 document.head.appendChild(style);
-
-console.log('Portfolio initialized successfully!');
